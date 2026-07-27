@@ -1,11 +1,7 @@
 # ============================================================
 # Lab 2 — Azure Networking
-# Verification Script — Confirm All Lab Resources and Connectivity
+# Script 03: VNet Peering, NSGs, Storage Private Endpoint
 # Emmanuel Onen | Senior Systems Engineer | Cayman Islands | July 2026
-# ============================================================
-# Run this after completing all lab steps.
-# Every check should return the expected result listed in the comments.
-# If any check fails, refer to the troubleshooting section in README.md
 # ============================================================
 
 # ── TASK 6: NSG FLOW LOGS AND LOG ANALYTICS ──────────────────────────────────
