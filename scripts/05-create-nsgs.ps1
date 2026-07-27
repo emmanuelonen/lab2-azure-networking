@@ -1,3 +1,9 @@
+# ============================================================
+# Lab 2 — Azure Networking
+# Script 03: VNet Peering, NSGs, Storage Private Endpoint
+# Emmanuel Onen | Senior Systems Engineer | Cayman Islands | July 2026
+# ============================================================
+
 # ── TASK 3: NETWORK SECURITY GROUPS ─────────────────────────────────────────
 # NSG for AppSubnet — least privilege ingress
 # Priority 100: Allow HTTP/HTTPS from VirtualNetwork tag
