@@ -3,6 +3,7 @@
 # Script 03: VNet Peering, NSGs, Storage Private Endpoint
 # Emmanuel Onen | Senior Systems Engineer | Cayman Islands | July 2026
 # ============================================================
+
 # ── TASK 4: STORAGE ACCOUNT WITH PRIVATE ENDPOINT ───────────────────────────
 
 # Create Storage Account — public access explicitly DISABLED
