@@ -4,14 +4,6 @@
 # Emmanuel Onen | Senior Systems Engineer | Cayman Islands | July 2026
 # ============================================================
 
-$ResourceGroup = "rg-networking-prod-eastus"
-$Location      = "EastUS"
-
-# Get VNet references
-$HubVNet   = Get-AzVirtualNetwork -ResourceGroupName $ResourceGroup -Name "vnet-hub-prod-eastus"
-$SpokeVNet = Get-AzVirtualNetwork -ResourceGroupName $ResourceGroup -Name "vnet-spoke-prod-eastus"
-
-
 # ── TASK 2: VNET PEERING ─────────────────────────────────────────────────────
 # Peering must be configured in BOTH directions.
 # Both sides must show Connected status before traffic flows.
