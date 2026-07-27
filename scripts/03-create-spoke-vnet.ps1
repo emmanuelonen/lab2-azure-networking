@@ -1,23 +1,25 @@
-# ── TASK 2: VNET PEERING ─────────────────────────────────────────────────────
-# Peering must be configured in BOTH directions.
-# Both sides must show Connected status before traffic flows.
+# ── SPOKE VNET ───────────────────────────────────────────────────────────────
 
-# Hub → Spoke
-Add-AzVirtualNetworkPeering `
-    -Name                   "hub-to-spoke" `
-    -VirtualNetwork         $HubVNet `
-    -RemoteVirtualNetworkId $SpokeVNet.Id `
-    -AllowVirtualNetworkAccess
+# Define Spoke subnets
+$AppSubnet  = New-AzVirtualNetworkSubnetConfig `
+    -Name "AppSubnet" `
+    -AddressPrefix "10.1.1.0/24"
 
-# Spoke → Hub
-Add-AzVirtualNetworkPeering `
-    -Name                   "spoke-to-hub" `
-    -VirtualNetwork         $SpokeVNet `
-    -RemoteVirtualNetworkId $HubVNet.Id `
-    -AllowVirtualNetworkAccess
+$DataSubnet = New-AzVirtualNetworkSubnetConfig `
+    -Name "DataSubnet" `
+    -AddressPrefix "10.1.2.0/24"
 
-Write-Host "VNet Peering configured bidirectionally" -ForegroundColor Green
+# Create Spoke VNet
+$SpokeVNet = New-AzVirtualNetwork `
+    -ResourceGroupName $ResourceGroup `
+    -Location          $Location `
+    -Name              "vnet-spoke-prod-eastus" `
+    -AddressPrefix     "10.1.0.0/16" `
+    -Subnet            $AppSubnet, $DataSubnet
 
-# Verify peering — both must show Connected
-Get-AzVirtualNetworkPeering -ResourceGroupName $ResourceGroup -VirtualNetworkName "vnet-hub-prod-eastus" |
-    Select-Object Name, PeeringState, PeeringSyncLevel
+Write-Host "Spoke VNet created: vnet-spoke-prod-eastus (10.1.0.0/16)" -ForegroundColor Green
+
+
+# ── VERIFY ───────────────────────────────────────────────────────────────────
+Get-AzVirtualNetwork -ResourceGroupName $ResourceGroup |
+    Select-Object Name, Location, @{N='AddressSpace';E={$_.AddressSpace.AddressPrefixes}}
