@@ -3,6 +3,7 @@
 # Script 03: VNet Peering, NSGs, Storage Private Endpoint
 # Emmanuel Onen | Senior Systems Engineer | Cayman Islands | July 2026
 # ============================================================
+
 # ── TASK 5: DEPLOY TEST VM IN APPSUBNET (NO PUBLIC IP) ───────────────────────
 
 $VMCredential = Get-Credential -Message "Set local admin credentials for vm-app-test"
