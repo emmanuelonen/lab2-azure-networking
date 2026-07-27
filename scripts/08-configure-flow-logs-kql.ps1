@@ -1,7 +1,11 @@
 # ============================================================
 # Lab 2 — Azure Networking
-# Script 03: VNet Peering, NSGs, Storage Private Endpoint
+# Verification Script — Confirm All Lab Resources and Connectivity
 # Emmanuel Onen | Senior Systems Engineer | Cayman Islands | July 2026
+# ============================================================
+# Run this after completing all lab steps.
+# Every check should return the expected result listed in the comments.
+# If any check fails, refer to the troubleshooting section in README.md
 # ============================================================
 
 # ── TASK 6: NSG FLOW LOGS AND LOG ANALYTICS ──────────────────────────────────
@@ -32,3 +36,7 @@ Write-Host "NSG Flow Logs enabled with 30-day retention" -ForegroundColor Green
 Write-Host "Note: AzureNetworkAnalytics_CL table populates after first 60-minute aggregation cycle" -ForegroundColor Yellow
 $ResourceGroup = "rg-networking-prod-eastus"
 $ResourceGroup = "rg-networking-prod-eastus"
+$ResourceGroup = "rg-networking-prod-eastus"
+
+Write-Host "`n=== LAB 2 VERIFICATION — AZURE NETWORKING ===" -ForegroundColor Cyan
+Write-Host "Resource Group: $ResourceGroup`n"
