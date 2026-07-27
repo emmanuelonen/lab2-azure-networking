@@ -1,0 +1,23 @@
+# ── TASK 2: VNET PEERING ─────────────────────────────────────────────────────
+# Peering must be configured in BOTH directions.
+# Both sides must show Connected status before traffic flows.
+
+# Hub → Spoke
+Add-AzVirtualNetworkPeering `
+    -Name                   "hub-to-spoke" `
+    -VirtualNetwork         $HubVNet `
+    -RemoteVirtualNetworkId $SpokeVNet.Id `
+    -AllowVirtualNetworkAccess
+
+# Spoke → Hub
+Add-AzVirtualNetworkPeering `
+    -Name                   "spoke-to-hub" `
+    -VirtualNetwork         $SpokeVNet `
+    -RemoteVirtualNetworkId $HubVNet.Id `
+    -AllowVirtualNetworkAccess
+
+Write-Host "VNet Peering configured bidirectionally" -ForegroundColor Green
+
+# Verify peering — both must show Connected
+Get-AzVirtualNetworkPeering -ResourceGroupName $ResourceGroup -VirtualNetworkName "vnet-hub-prod-eastus" |
+    Select-Object Name, PeeringState, PeeringSyncLevel
