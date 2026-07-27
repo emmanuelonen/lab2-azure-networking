@@ -81,6 +81,12 @@ Set-AzVirtualNetworkSubnetConfig -VirtualNetwork $SpokeVNet -Name "AppSubnet" `
     -NetworkSecurityGroup $NsgApp | Set-AzVirtualNetwork
 
 Set-AzVirtualNetworkSubnetConfig -VirtualNetwork $SpokeVNet -Name "DataSubnet" `
+$ResourceGroup = "rg-networking-prod-eastus"
+$Location      = "EastUS"
+
+# Get VNet references
+$HubVNet   = Get-AzVirtualNetwork -ResourceGroupName $ResourceGroup -Name "vnet-hub-prod-eastus"
+$SpokeVNet = Get-AzVirtualNetwork -ResourceGroupName $ResourceGroup -Name "vnet-spoke-prod-eastus"
     -AddressPrefix $DataSubnetConfig.AddressPrefix `
     -NetworkSecurityGroup $NsgData | Set-AzVirtualNetwork
 
